@@ -3,6 +3,7 @@ name: daily-contribution
 on:
   schedule:
     - cron: "0 1 * * *"
+    - cron: "0 13 * * *"
   workflow_dispatch:
 
 jobs:
@@ -14,11 +15,11 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: 12 daily commits
+      - name: 25 daily commits
         run: |
           git config user.name "n1lokaDeep"
           git config user.email "kolyastrstr@gmail.com"
-          for i in $(seq 1 12); do
+          for i in $(seq 1 25); do
             echo "$(date -u +%Y-%m-%d) commit $i" >> daily-contributions.txt
             git add daily-contributions.txt
             git commit -m "daily contribution $i"
